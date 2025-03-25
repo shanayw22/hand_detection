@@ -1,3 +1,4 @@
+OpenGL
 opencv-python
 streamlit
 ultralytics
