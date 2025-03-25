@@ -2,3 +2,5 @@ opencv-python==4.7.0.72
 streamlit==1.21.0
 ultralytics==8.0.38
 asyncio==3.4.3
+numpy==1.24.2
+pandas==1.5.3
