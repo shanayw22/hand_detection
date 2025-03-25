@@ -1,7 +1,7 @@
 import cv2
 import streamlit as st
 from ultralytics import YOLO
-import asyncio
+import numpy as np
 
 # Load YOLOv5 model (Replace 'saved_model.pt' with your own model path if needed)
 model = YOLO('saved_model.pt')  # Change 'saved_model.pt' to your custom model if necessary
@@ -11,15 +11,20 @@ st.write("This app uses a YOLOv5 model to detect hands in real-time using your w
 
 # Function for hand detection in real-time using webcam
 def detect_hand_from_webcam():
-    # Initialize the webcam (default is 0, might need adjustment)
+    # Try initializing the webcam (default is 0, might need adjustment)
     cap = cv2.VideoCapture(0)
     
+    if not cap.isOpened():
+        st.error("Unable to access the webcam. Please ensure your device has a working webcam.")
+        return
+
     # Create a placeholder for displaying the video feed
     frame_placeholder = st.empty()
 
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
+            st.warning("Failed to read frame from webcam.")
             break
 
         # Convert the frame to RGB (YOLO expects RGB format)
@@ -57,10 +62,6 @@ def detect_hand_from_webcam():
 
     cap.release()
 
-# Async wrapper to run the Streamlit function
-async def run():
-    detect_hand_from_webcam()
-
-# Run the webcam detection function in Streamlit within an asyncio event loop
+# Run the webcam detection function in Streamlit
 if __name__ == "__main__":
-    asyncio.run(run())  # Run the Streamlit app within an event loop
+    detect_hand_from_webcam()  # Run the Streamlit app without asyncio
