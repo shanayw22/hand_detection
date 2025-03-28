@@ -1,6 +1,6 @@
-# Mini-project-3: Real-time Sign Language Detection Application
+# Real-time Sign Language Detection Application
 
-**Goal**: Develop a real-time application that detects and interprets sign language digits using a combination of object detection and classification models. The project will involve building a pipeline that detects hands in video frames and classifies the detected hand gestures into sign language digits.
+Develop a real-time application that detects and interprets sign language digits using a combination of object detection and classification models. The project will involve building a pipeline that detects hands in video frames and classifies the detected hand gestures into sign language digits.
 
 ## Project Summary
 
